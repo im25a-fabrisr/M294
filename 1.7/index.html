@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <script type="text/javascript">
+            const randomNumber = Math.floor(Math.random() * 100) +1;
+            
+            
+            let guess = -1;
+            console.log(randomNumber);
+            console.log(guess);
+
+            while(guess != randomNumber){
+                guess = prompt("Geben Sie eine Zahl zwischen 1 und 100 ein:");
+
+                if(guess == randomNumber){
+                    alert("Herzlichen Glückwunsch! Sie haben die richtige Zahl erraten.");
+                } else if(guess < randomNumber){
+                    alert("Die gesuchte Zahl ist größer als Ihre Eingabe.");
+                } else {
+                    alert("Die gesuchte Zahl ist kleiner als Ihre Eingabe.");
+            }
+            }
+        </script>
+    </head>
+    <body>
+        
+    </body>
+</html>
