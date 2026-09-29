@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>3.1</title>
+        <style>
+            #Feld { 
+                background-color: green; 
+                width: 600px; 
+                height: 400px; 
+                position: relative; 
+                overflow: hidden;
+            }
+
+            #Ball { 
+                width: 60px; 
+                height: 60px; 
+                position: absolute; 
+                top: 0px; 
+                left: 0px; 
+                transform: translate(-50%, -50%); 
+            }
+        </style>
+    </head>
+    <body>
+        <button id="randomahhButton">Klick mich!</button>
+
+        <div id="Feld">
+            <img id="Ball" src="C:\Users\ricca\Downloads\soccer-ball-svgrepo-com.svg" alt="Soccer Ball">
+        </div>
+
+        <script>
+
+            const button = document.getElementById('randomahhButton');
+
+            const h1 = document.createElement('h1');
+            h1.textContent = '0';
+            document.body.insertBefore(h1, button);
+
+            let counter = 0;
+            button.addEventListener('click', () => {
+                counter++;
+                h1.textContent = counter;
+            });
+
+            const h1v2 = document.createElement('h1');
+            h1v2.textContent = '0';
+
+            const NewButton = document.createElement('button');
+            NewButton.textContent = 'Klick mich auch!';
+            
+            document.body.appendChild(h1v2);
+            document.body.appendChild(NewButton);
+
+            let counter2 = 0;
+            NewButton.addEventListener('click', () => {
+                counter2++;
+                h1v2.textContent = counter2;
+            });
+
+            const Feld = document.getElementById('Feld');
+            const Ball = document.getElementById('Ball');
+
+            Feld.addEventListener('click', (event) => {
+                const rect = Feld.getBoundingClientRect();
+                const x = event.clientX - rect.left;
+                const y = event.clientY - rect.top;
+
+                Ball.style.left = x + 'px';
+                Ball.style.top = y + 'px';
+            });
+        </script>
+    </body>
+</html>
