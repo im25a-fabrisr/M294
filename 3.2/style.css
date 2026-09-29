@@ -1,0 +1,45 @@
+.cover-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.cover-grid img {
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+
+body {
+    background-color: #3de863;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+    margin: 0;
+}
+
+.pill-btn {
+  background: transparent;
+  color: white;
+  border: 1px solid white;
+  border-radius: 20px;
+  padding: 8px 15px;
+}
+
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.footer-content {
+  background-color: #d8fcd6;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 30px;
+}

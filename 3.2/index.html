@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spoofify</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 class="logo">Spoofify</h1>
+        <div class="buttons">
+            <button class="pill-btn">Top of your birthweek</button>
+            <button class="pill-btn">Latest releases randomized</button>
+     </div>
+    </header>
+
+    <main class="container">
+        <h1>Your spoofed overview</h1>
+        <p class="welcome">Welcome to Spoofify, the rip-off music streaming service of ICT Module 291!</p>
+        
+        <section class="section">
+            <h2>Top of your birthweek</h2>
+            <ol class="songlist">
+                <li><strong>Jump </strong> by<em> Kriss Kross</em></li>
+                <li><strong>My Lovin' (You're Never Gonna Get It)</strong> by<em> En Vogue</em></li>
+                <li><strong>Bohemian Rhapsody</strong> by<em> Queen</em></li>
+                <li><strong>Save The Best For Last</strong> by<em> Vanessa Williams</em></li>
+                <li><strong>Live And Learn</strong> by<em> Joe Public</em></li>
+            </ol>
+        </section>
+
+        <section class="section">
+            <h2>Latest releases randomized</h2>
+            <div class="cover-grid" id="cover-grid"></div>
+        </section>
+
+        <script>
+            // Alle Bilder mit vollem file://-Pfad
+            const allCovers = [
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0 (1).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0 (2).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0 (3).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0 (4).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0 (5).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-0.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/0x1900-000000-80-0-1.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/1a87b2c7fec0a5110aaf983491f657ee.1000x1000x1.png',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/4fbb7fdd5ddac9c833f7ddf512a1327b.1000x1000x1.png',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/1900x1900-000000-80-0-0 (1).jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/1900x1900-000000-80-0-0.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/121075147_350_350.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d0000b273b2e6124d7af68318d850e293.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d0000b2734e0d141436ca85c387318ee1.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d0000b2737f6c9ecbf7dabafe97c743c2.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d0000b273087e6bdcc656a3bb33ee27cf.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d00001e02d6b72d93a202202fa19d9a0f.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d00001e02e7fb8a1a02dc773252883311.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d00001e022de651bcd93e5f9a7f46af78.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d00001e022995474a3b73bb88523bee3f.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/ab67616d00001e0275850556555ed4fe758ebe0e.jpeg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/artworks-dx2eDLezALKPGvCY-ThwhTw-t1080x1080.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/artworks-xeOF98jdSKKwkvLu-vyqsNw-t500x500.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/artworks-y03rDDvmgDxZ-0-t500x500.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/b5dd5e86b591aa1e182f4eb7e5580ae0.1000x1000x1.png',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/c3065581a0.webp',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/image1.webp',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/images.jpg',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/kodakblackmixtapecover.webp',
+                'file:///C:/ZLI/2/294/Spoofify/Covers/LAZER DIM 700_ KEEPIN IT CLOUDY.webp'
+            ];
+
+            // Zufällig durchmischen
+            const shuffled = allCovers.sort(() => 0.5 - Math.random());
+
+            const grid = document.getElementById('cover-grid');
+
+            // 6 zufällige Bilder anzeigen
+            shuffled.slice(0, 6).forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `Cover ${index + 1}`;
+                grid.appendChild(img);
+            });
+        </script>
+
+    </main>
+    
+    <footer>
+        <div class="footer-content">
+            &copy; 2023 Spooky Example, Inc.
+        </div>
+    </footer> 
+</body>
+</html>
