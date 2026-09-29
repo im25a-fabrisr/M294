@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3</title>
+    <style>
+        .large {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Platzhalter</h1>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit a</p>
+    <ul>
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+
+    <script>
+        const bodyElement = document.querySelector('body');
+        bodyElement.style.backgroundColor = 'ivory';
+
+        const heading = document.querySelector('h1');
+        heading.innerText = 'Riccardo';
+
+        const paragraph = document.querySelector('p');
+        paragraph.classList.add('large');
+
+        const list = document.querySelector('ul');
+        const newLi = document.createElement('li');
+        newLi.innerText = 'Item 3';
+        list.append(newLi)
+
+        const allListItems = document.querySelectorAll('ul li');-->
+        const secondListItem = allListItems[1];
+        secondListItem.remove();
+
+        const NewImage = document.createElement('img');
+        NewImage.src = 'https://i.pinimg.com/originals/3d/66/a6/3d66a64155f38b02cb4daf81cabe1347.jpg';
+        NewImage.alt = 'Ajanokoji';
+        heading.after(NewImage);
+
+        NewImage.style.width = '20%';
+    </script>
+</body>
+</html>
