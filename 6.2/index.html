@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <style>
+        label, input {
+            display: block;
+        }
+
+        label {
+            font-size: 12px;
+        }
+
+        input:invalid {
+            border: 1px solid red;
+        }
+
+        input:valid {
+            border: 1px solid green;
+        }
+       </style>
+
+       <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+            const registerForm = document.forms.register;
+            registerForm.addEventListener('submit', (event) => {
+                event.preventDefault();
+                console.log('Form submitted');
+            });
+        
+            registerForm.passwordConfirm.onblur = () => {
+                console.log(registerForm.passwordConfirm.value);
+                if(registerForm.password.value !== registerForm.passwordConfirm.value) {
+                    registerForm.passwordConfirm.setCustomValidity('Passwords do not match');
+                } else {
+                    registerForm.passwordConfirm.setCustomValidity('');
+                }
+            }
+        });
+       </script>
+    </head>
+    
+    <body>
+        <form name="register">
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" name="email" required>
+            
+            <label for="password">Passwort</label>
+            <input type="password" name="password" required minlength="6">
+            
+            <label for="passwordConfirm">Passwort bestätigen</label>
+            <input type="password" name="passwordConfirm" required minlength="6">
+            
+            <label for="agb">AGB's akzeptieren</label>
+            <input type="checkbox" name="agb">
+            
+            <button type="submit">Registrieren</button>
+        </form>
+    </body>
