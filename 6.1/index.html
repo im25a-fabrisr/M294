@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="text/javascript">
+            // Benutzer nach seinem Namen fragen
+            let name = prompt('Wie heissen Sie?');
+            console.log(name);
+
+            let date = new Date();
+            let currentHours = date.getHours();
+
+            console.log(currentHours);
+            if(currentHours >=5 && currentHours <= 12) {
+                alert('Guten Morgen '+ name);
+            } else if (currentHours <= 19){
+                alert('Guten Tag '+ name);
+            } else if (currentHours <= 22){
+                alert('Guten Abend '+ name);
+            } else {
+                alert('Gute Nacht '+ name);
+            }
+
+
+        </script>
+
+
+    </head>
+    <body>
+
+    </body>
+</html>
